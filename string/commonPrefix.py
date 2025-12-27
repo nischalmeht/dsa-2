@@ -1,4 +1,4 @@
-strs = ["dog","racecar","car"]
+strs = ["flower","flow","flowesh"]
 s=sorted(strs)
 first=s[0]
 last=s[-1]
