@@ -1,0 +1,42 @@
+/**
+ * @param {number[]} nums
+ * @return {number[]}
+ */
+let nums = [-4,-1,0,3,10]
+// let left =0
+// let right = nums.length -1
+// let index =nums.length -1;
+// let arr = new Array(nums.length)
+
+// while (left<=right) {
+//     let leftVal = nums[left] * nums[left];
+//     let rightVal = nums[right] * nums[right]
+//     if(leftVal>rightVal){
+//         arr[index]=leftVal 
+//         left++
+//     }else{
+//         arr[index]=rightVal 
+//         right --
+//     }
+//     index --
+// }
+// console.log(arr)
+
+var sortedSquares = function(nums) {
+    let result=new Array(nums.length)
+    let left=0
+    let right=nums.length-1
+    let k= nums.length-1
+    while(left<=right){
+        if(Math.abs(nums[left])> Math.abs(nums[right])){
+            result[k]=nums[left] * nums[left]
+            left++            
+        }else{
+            result[k]=nums[right] * nums[right]
+            right--
+        }
+        k--
+    }
+    return result
+   
+};
