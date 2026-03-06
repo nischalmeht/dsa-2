@@ -1,0 +1,16 @@
+/**
+ * @param {string} s
+ * @return {number}
+ */
+var minimumDeletions = function(s) {
+    let bCount=0
+    let deletion=0
+    for(let item of s){
+        if(item=='b'){
+            bCount++
+        }else{
+            deletion = Math.min(bCount, deletion+1)
+        }
+    }
+    return deletion
+};
