@@ -1,0 +1,19 @@
+/**
+ * @param {number[][]} trips
+ * @param {number} capacity
+ * @return {boolean}
+ */
+var carPooling = function(trips, capacity) {
+   const maxLocation = Math.max(...trips.flatMap(trip=>[trip[1],trip[2]]));
+   let arr = new Array(maxLocation).fill(0);
+   for(let [val,start,end] of trips){
+    arr[start]+=val
+    arr[end]-=val    
+   }
+   let current =0
+   for(let i=0;i<=maxLocation;i++){
+    current+=arr[i]
+    if(current>capacity) return false
+   }
+   return true
+};
