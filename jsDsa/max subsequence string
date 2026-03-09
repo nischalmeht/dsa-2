@@ -1,0 +1,36 @@
+let s = "aabcbcdbca";
+
+let map = new Map();
+let uniqueSet = new Set(s).size;
+
+let left = 0;
+let count = 0;
+let minLen = Infinity;
+let start = 0;
+
+for (let right = 0; right < s.length; right++) {
+
+    map.set(s[right], (map.get(s[right]) || 0) + 1);
+
+    if (map.get(s[right]) === 1) {
+        count++;
+    }
+
+    while (count === uniqueSet) {
+
+        if (right - left + 1 < minLen) {
+            minLen = right - left + 1;
+            start = left;
+        }
+
+        map.set(s[left], map.get(s[left]) - 1);
+
+        if (map.get(s[left]) === 0) {
+            count--;
+        }
+
+        left++;
+    }
+}
+
+console.log(s.substring(start, start + minLen));
