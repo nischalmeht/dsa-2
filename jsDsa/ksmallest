@@ -1,0 +1,18 @@
+function kthSmallest(arr, k) {
+    function quickSelect(left, right) {
+        let pivot = arr[right];
+        let p =left
+        for(let i=left;i<right;i++){
+            if(arr[i]<=pivot){
+                [arr[p],arr[i]]=[arr[i],arr[p]]
+                p++
+            }
+        }
+        [arr[p],arr[right]] = [arr[right],arr[p]]
+        if(p==k-1) return arr[p]
+        else if (p<k-1) return quickSelect(p+1,right)
+        else return quickSelect(left,p-1)
+    }
+    return quickSelect(0,arr.length-1)
+} 
+console.log(kthSmallest([1,2,3,4,5],2))
