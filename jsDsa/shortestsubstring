@@ -1,0 +1,28 @@
+function shortestSubstring(s) {
+    let unique = new Set(s).size;
+    let map = {};
+    let left = 0, count = 0;
+    let minLen = Infinity, start = 0;
+
+    for (let right = 0; right < s.length; right++) {
+        let ch = s[right];
+        map[ch] = (map[ch] || 0) + 1;
+
+        if (map[ch] === 1) count++;
+
+        while (count === unique) {
+            if (right - left + 1 < minLen) {
+                minLen = right - left + 1;
+                start = left;
+            }
+
+            map[s[left]]--;
+            if (map[s[left]] === 0) count--;
+            left++;
+        }
+    }
+
+    return s.substring(start, start + minLen);
+}
+
+console.log(shortestSubstring("aabcbcdbca"));
