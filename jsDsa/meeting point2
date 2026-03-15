@@ -1,0 +1,22 @@
+function minMeetingRooms(intervals) {
+    let n = intervals.length;
+
+    let start = intervals.map(i => i[0]).sort((a,b)=>a-b);
+    let end = intervals.map(i => i[1]).sort((a,b)=>a-b);
+
+    let rooms = 0;
+    let endPtr = 0;
+
+    for (let i = 0; i < n; i++) {
+
+        if (start[i] < end[endPtr]) {
+            rooms++;
+        } else {
+            endPtr++;
+        }
+    }
+
+    return rooms;
+}
+
+console.log(minMeetingRooms([[0,30],[5,10],[15,20]]));
