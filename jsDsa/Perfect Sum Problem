@@ -1,0 +1,19 @@
+/**
+ * @param {number[]} arr
+ * @param {number} target
+ * @return {number}
+ */
+
+class Solution {
+    perfectSum(arr, target) {
+        // code here
+        let dp =new Array(target + 1).fill(0)
+        dp[0]=1
+        for(let num of arr){
+            for(let j=target;j>=num;j--){
+                dp[j]+=dp[j-num]
+            }
+        }
+        return dp[target]
+    }
+}
